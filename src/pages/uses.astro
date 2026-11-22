@@ -1,0 +1,80 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { usesData } from '../data/uses';
+---
+
+<Layout title="Uses & Workstation Setup (Arch Linux Rice) — Max">
+  <div class="space-y-10 font-mono">
+    <!-- Header -->
+    <div class="border-b border-[#162334] pb-6 space-y-2">
+      <div class="inline-flex items-center space-x-2 text-xs text-arasaka-red">
+        <span class="w-2 h-2 rounded-full bg-arasaka-red animate-pulse"></span>
+        <span>HARDWARE & ENVIRONMENT // DOTFILES</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white">
+        Uses: Systems, Hardware & Tools
+      </h1>
+      <p class="text-sm text-gray-400 max-w-3xl leading-relaxed">
+        My daily computing setup, Arch Linux configuration, Hyprland desktop environment, Kitty terminal with Arasaka color tuning, musical instruments, and athletic gear.
+      </p>
+    </div>
+
+    <!-- The Arasaka Terminal Palette Spotlight -->
+    <div class="p-6 rounded-lg bg-[#080002] border border-[#ff1e3c]/40 space-y-4 shadow-arasaka-sm">
+      <div class="flex items-center justify-between text-xs border-b border-[#3a0f16] pb-3">
+        <span class="text-[#ff1e3c] font-bold uppercase tracking-wider">
+          KITTY CONFIG // ARASAKA CRIMSON PALETTE
+        </span>
+        <span class="text-gray-500 font-mono">listen_on: /tmp/kitty-arasaka</span>
+      </div>
+
+      <div class="space-y-2 text-xs text-gray-300 font-mono">
+        <p class="text-gray-400">
+          Red-dominant surface (<code class="text-[#ff1e3c] font-bold">#ff1e3c</code>) on void black (<code class="text-[#ff4d5e]">#080002</code>) with zero white text anywhere. JetBrains Mono font with ligatures and nerd font glyphs.
+        </p>
+        <pre class="p-4 rounded bg-[#040001] border border-[#3a0f16] text-[#ff4d5e] overflow-x-auto text-xs leading-relaxed">
+background            #080002
+foreground            #ff4d5e
+selection_background  #ff1e3c
+active_border_color   #ff1e3c
+font_family           JetBrains Mono
+dynamic_background_opacity yes</pre>
+      </div>
+    </div>
+
+    <!-- Structured Categories -->
+    <div class="space-y-8">
+      {usesData.map((cat) => (
+        <div key={cat.category} class="p-6 rounded-lg bg-[#070c14] border border-[#162334] space-y-4">
+          <div class="border-b border-[#141e2e] pb-2">
+            <h2 class="text-base font-bold text-white uppercase tracking-wider flex items-center space-x-2">
+              <span class="text-emerald-400">▹</span>
+              <span>{cat.category}</span>
+            </h2>
+            <p class="text-xs text-gray-500 mt-1">
+              {cat.description}
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {cat.items.map((item) => (
+              <div key={item.name} class="p-4 rounded bg-[#03060a] border border-[#141e2e] space-y-1">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-bold text-white">{item.name}</span>
+                  {item.link && (
+                    <a href={item.link} target="_blank" rel="noopener noreferrer" class="text-[10px] text-cyan-400 hover:underline">
+                      Link ↗
+                    </a>
+                  )}
+                </div>
+                <p class="text-xs text-gray-400 leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</Layout>

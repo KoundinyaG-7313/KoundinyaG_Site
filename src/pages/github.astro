@@ -1,0 +1,142 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { staticGitHubData } from '../data/githubData';
+import { profile } from '../data/profile';
+---
+
+<Layout title="GitHub Telemetry & Repositories — Max">
+  <div class="space-y-10 font-mono">
+    <!-- Header -->
+    <div class="border-b border-[#162334] pb-6 space-y-2">
+      <div class="inline-flex items-center space-x-2 text-xs text-emerald-400">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>CODE REPOSITORY TELEMETRY // GITHUB SYNC</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white">
+        GitHub Repositories & Contribution Activity
+      </h1>
+      <p class="text-sm text-gray-400 max-w-3xl leading-relaxed">
+        Live-synchronized telemetry for <strong class="text-white">{profile.contact.githubUser}</strong>. All commits carrying verified author timestamps and cryptographic hashes.
+      </p>
+
+      <div class="pt-2">
+        <a 
+          href={profile.contact.github} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="inline-flex items-center space-x-2 px-3 py-1.5 rounded bg-[#0b121e] border border-emerald-500/40 text-xs text-emerald-300 hover:bg-[#101b2e] transition-colors"
+        >
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          <span>github.com/{profile.contact.githubUser}</span>
+          <span>↗</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Summary Stats Bar -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs">
+      <div class="p-4 rounded-lg bg-[#070c14] border border-[#162334]">
+        <span class="text-gray-500 block uppercase text-[10px]">TOTAL REPOSITORIES</span>
+        <span class="text-xl font-bold text-white mt-1 block">{staticGitHubData.totalRepos} Repos</span>
+      </div>
+      <div class="p-4 rounded-lg bg-[#070c14] border border-[#162334]">
+        <span class="text-gray-500 block uppercase text-[10px]">VERIFIED COMMITS</span>
+        <span class="text-xl font-bold text-emerald-400 mt-1 block">{staticGitHubData.totalCommits}+ Commits</span>
+      </div>
+      <div class="p-4 rounded-lg bg-[#070c14] border border-[#162334]">
+        <span class="text-gray-500 block uppercase text-[10px]">PRIMARY SYSTEMS LANGUAGE</span>
+        <span class="text-xl font-bold text-cyan-400 mt-1 block">Rust & C++</span>
+      </div>
+      <div class="p-4 rounded-lg bg-[#070c14] border border-[#162334]">
+        <span class="text-gray-500 block uppercase text-[10px]">CACHE STATUS</span>
+        <span class="text-xl font-bold text-amber-400 mt-1 block">STATIC SYNCED</span>
+      </div>
+    </div>
+
+    <!-- Language Distribution Bar -->
+    <div class="p-6 rounded-lg bg-[#070c14] border border-[#162334] space-y-4">
+      <div class="flex items-center justify-between text-xs">
+        <span class="text-white font-bold uppercase tracking-wider">LANGUAGE USAGE COMPOSITION</span>
+        <span class="text-gray-500 text-[10px]">DERIVED ACROSS COMMITTED SOURCE CODE</span>
+      </div>
+
+      <!-- Segmented Bar -->
+      <div class="w-full h-3 rounded-full overflow-hidden flex bg-[#0c1420]">
+        {staticGitHubData.languages.map(lang => (
+          <div 
+            key={lang.name} 
+            style={{ width: `${lang.percentage}%`, backgroundColor: lang.color }} 
+            title={`${lang.name}: ${lang.percentage}%`}
+          />
+        ))}
+      </div>
+
+      <!-- Legend -->
+      <div class="flex flex-wrap gap-4 text-xs pt-1">
+        {staticGitHubData.languages.map(lang => (
+          <div key={lang.name} class="flex items-center space-x-2">
+            <span class="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: lang.color }} />
+            <span class="text-gray-300 font-semibold">{lang.name}</span>
+            <span class="text-gray-500">{lang.percentage}%</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Repositories Grid -->
+    <div class="space-y-4">
+      <h2 class="text-base font-bold text-white uppercase tracking-wider flex items-center space-x-2">
+        <span class="text-emerald-400">REPOSITORIES //</span>
+        <span>CODEBASES UNDER @{profile.contact.githubUser}</span>
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {staticGitHubData.repos.map(repo => (
+          <div 
+            key={repo.name}
+            class="p-6 rounded-lg bg-[#070c14] border border-[#162334] hover:border-emerald-500/40 transition-all flex flex-col justify-between space-y-4"
+          >
+            <div class="space-y-3">
+              <div class="flex items-center justify-between text-xs">
+                <a 
+                  href={repo.htmlUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="text-base font-bold text-emerald-400 hover:underline flex items-center space-x-1.5"
+                >
+                  <span>{repo.name}</span>
+                  <span class="text-xs">↗</span>
+                </a>
+                <span class="text-[10px] text-gray-500 px-2 py-0.5 rounded bg-[#0b121e] border border-[#162334]">
+                  {repo.commitsEstimate} commits
+                </span>
+              </div>
+
+              <p class="text-xs text-gray-300 leading-relaxed">
+                {repo.description}
+              </p>
+            </div>
+
+            <div class="space-y-3 pt-3 border-t border-[#141e2e]">
+              <div class="flex flex-wrap gap-1">
+                {repo.topics.map(topic => (
+                  <span key={topic} class="text-[10px] px-1.5 py-0.5 rounded bg-[#0b121e] text-gray-400">
+                    #{topic}
+                  </span>
+                ))}
+              </div>
+
+              <div class="flex items-center justify-between text-[11px] text-gray-500 pt-1">
+                <span class="flex items-center space-x-1.5">
+                  <span class="w-2 h-2 rounded-full bg-cyan-400" />
+                  <span class="text-gray-300">{repo.language}</span>
+                </span>
+                <span>Branch: {repo.defaultBranch}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</Layout>

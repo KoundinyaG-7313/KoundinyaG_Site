@@ -1,0 +1,173 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { profile } from '../data/profile';
+import { MathBlock } from '../components/MathBlock';
+---
+
+<Layout title="About Max (Koundinya Gajulapalli) — Profile & Dossier">
+  <div class="space-y-12 font-mono">
+    <!-- Header -->
+    <div class="border-b border-[#162334] pb-6 space-y-2">
+      <div class="inline-flex items-center space-x-2 text-xs text-emerald-400">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>DOSSIER // IDENTITY MATRIX</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white">
+        About Koundinya Gajulapalli <span class="text-emerald-400">— Max</span>
+      </h1>
+      <p class="text-sm text-gray-400 max-w-3xl leading-relaxed">
+        Student, researcher, systems engineer, classical musician, endurance athlete, and explorer.
+      </p>
+    </div>
+
+    <!-- Player Profile HUD Card -->
+    <div class="p-6 sm:p-8 rounded-lg bg-[#070c14] border border-emerald-900/50 shadow-2xl space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-[#141e2e] gap-4">
+        <div class="flex items-center space-x-4">
+          <div class="w-16 h-16 rounded bg-[#0d1522] border-2 border-emerald-400 flex items-center justify-center text-emerald-400 text-2xl font-bold shadow-cyber-sm">
+            MAX
+          </div>
+          <div>
+            <h2 class="text-xl font-bold text-white">Koundinya Gajulapalli</h2>
+            <p class="text-xs text-gray-400">ALIAS: <span class="text-emerald-400">Max</span> // BENGALURU, IN</p>
+            <p class="text-[11px] text-cyan-400/90 font-mono mt-0.5">ARCH_LINUX // HYPRLAND // KITTY_ARASAKA</p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-2 text-xs">
+          <span class="px-2.5 py-1 rounded bg-[#0d1624] text-emerald-300 border border-emerald-500/30">
+            CLASS: THEORETICAL_PHYSICIST
+          </span>
+          <span class="px-2.5 py-1 rounded bg-[#0d1624] text-cyan-300 border border-cyan-500/30">
+            SUBCLASS: SYSTEMS_ARCHITECT
+          </span>
+        </div>
+      </div>
+
+      <!-- Quick Stats Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs">
+        <div class="p-3 rounded bg-[#03060a] border border-[#141e2e]">
+          <span class="text-[10px] text-gray-500 block uppercase">CORE FOCUS</span>
+          <span class="text-white font-bold">Quantum Gravity & 5D Bulk</span>
+        </div>
+        <div class="p-3 rounded bg-[#03060a] border border-[#141e2e]">
+          <span class="text-[10px] text-gray-500 block uppercase">DAILY DRIVER</span>
+          <span class="text-emerald-400 font-bold">Arch Linux (Void Theme)</span>
+        </div>
+        <div class="p-3 rounded bg-[#03060a] border border-[#141e2e]">
+          <span class="text-[10px] text-gray-500 block uppercase">ACOUSTICS</span>
+          <span class="text-amber-400 font-bold">Sarod & Piano</span>
+        </div>
+        <div class="p-3 rounded bg-[#03060a] border border-[#141e2e]">
+          <span class="text-[10px] text-gray-500 block uppercase">ENDURANCE</span>
+          <span class="text-cyan-400 font-bold">Mountain Cycling Century</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Structured Sections -->
+    <div class="space-y-10 text-xs sm:text-sm text-gray-300">
+      <!-- 01: Who I Am -->
+      <section class="p-6 rounded-lg bg-[#070c14] border border-[#162334] space-y-3">
+        <h3 class="text-base font-bold text-emerald-400 uppercase tracking-wider flex items-center space-x-2">
+          <span>01 //</span>
+          <span>WHO I AM</span>
+        </h3>
+        <p class="leading-relaxed">
+          I'm Max. I'm a student, scientist, programmer, mathematician, musician, engineer, gamer, and explorer. 
+          I am intellectually ambitious, independent, eccentric, playful, analytical, and occasionally chaotic. 
+          I enjoy difficult problems, obscure rabbit holes, building things from scratch, experimenting, understanding how systems work, and pushing myself beyond conventional expectations.
+        </p>
+        <p class="leading-relaxed text-gray-400">
+          I value intellectual freedom, competence, genuine understanding, privacy, scientific truth, and respect earned through substance rather than status. I have no patience for empty motivational language or superficial networking.
+        </p>
+      </section>
+
+      <!-- 02: What I Study & What I Research -->
+      <section class="p-6 rounded-lg bg-[#070c14] border border-[#162334] space-y-4">
+        <h3 class="text-base font-bold text-cyan-400 uppercase tracking-wider flex items-center space-x-2">
+          <span>02 //</span>
+          <span>WHAT I STUDY & RESEARCH</span>
+        </h3>
+        <p class="leading-relaxed">
+          Physics is central to my life. My primary ambition is to become a fundamental theoretical physicist in cosmology, quantum gravity, and the deep structure of spacetime.
+        </p>
+        <div class="p-4 rounded bg-[#03060a] border border-cyan-900/40 space-y-2">
+          <div class="font-bold text-white text-sm">
+            Primary Research: "Relational Time and Cyclic Cosmology in a Five-Dimensional Ultrahyperbolic Bulk"
+          </div>
+          <p class="text-xs text-gray-400 leading-relaxed">
+            Investigating Machian relational dynamics, vanishing Hamiltonian constraints (<span class="text-emerald-300 font-serif font-bold">ℋ ≈ 0</span>), non-singular cyclic bounces, and how 5D ultrahyperbolic spacetime geometry naturally replicates flat galactic rotation curves without arbitrary dark matter tuning.
+          </p>
+        </div>
+        <p class="leading-relaxed text-gray-400">
+          I self-study university-level mathematics and theoretical physics, including General Relativity, Quantum Field Theory, Differential Geometry, Tensor Calculus, and Riemannian manifolds.
+        </p>
+      </section>
+
+      <!-- 03: What I Build & Create -->
+      <section class="p-6 rounded-lg bg-[#070c14] border border-[#162334] space-y-4">
+        <h3 class="text-base font-bold text-amber-400 uppercase tracking-wider flex items-center space-x-2">
+          <span>03 //</span>
+          <span>WHAT I BUILD & CREATE</span>
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="p-4 rounded bg-[#03060a] border border-[#162334] space-y-2">
+            <span class="text-xs font-bold text-white block">Low-Level Systems & Linux</span>
+            <p class="text-xs text-gray-400 leading-relaxed">
+              Author of <strong class="text-white">Omni-Dashboard</strong>, a real-time Linux telemetry daemon written in Rust and C++ that parses procfs directly into zero-overhead ring buffers. Arch Linux enthusiast who tunes Wayland, Hyprland, and custom terminal environments.
+            </p>
+          </div>
+          <div class="p-4 rounded bg-[#03060a] border border-[#162334] space-y-2">
+            <span class="text-xs font-bold text-white block">Indian Classical Sarod & Classical Piano</span>
+            <p class="text-xs text-gray-400 leading-relaxed">
+              Serious practitioner of the Sarod, mastering fretless steel microtonal meend and classical ragas. Also play classical piano (Bach counterpoint, Rachmaninoff) and translate microtonality into algorithmic synthesis code (<strong class="text-white">AlgorithmicMusicApp</strong>).
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 04: What I'm Currently Exploring & Long-term Goals -->
+      <section class="p-6 rounded-lg bg-[#070c14] border border-[#162334] space-y-4">
+        <h3 class="text-base font-bold text-purple-400 uppercase tracking-wider flex items-center space-x-2">
+          <span>04 //</span>
+          <span>CURRENT FOCUS & LONG-TERM TRAJECTORY</span>
+        </h3>
+        <div class="space-y-3">
+          <p class="leading-relaxed">
+            <strong class="text-white">Active Research:</strong> Formalizing boundary conditions across ultrahyperbolic signature phase transitions and verifying numerical conformal time solutions.
+          </p>
+          <p class="leading-relaxed">
+            <strong class="text-white">Athletics:</strong> High-cadence endurance cycling, climbing alpine gradients, preparing for multi-sport endurance challenges.
+          </p>
+          <p class="leading-relaxed">
+            <strong class="text-white">Long-term Ambition:</strong> To contribute foundational insights to theoretical physics, produce original mathematical frameworks that outlast transient trends, and build tools that have authentic, tangible substance.
+          </p>
+        </div>
+      </section>
+
+      <!-- 05: Complete Skills Matrix -->
+      <section class="space-y-4 pt-4">
+        <h3 class="text-base font-bold text-white uppercase tracking-wider">
+          SKILLS & DOMAIN EXPERTISE MATRIX
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {profile.skills.map((group, idx) => (
+            <div key={idx} class="p-5 rounded-lg bg-[#070c14] border border-[#162334] space-y-2.5">
+              <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider block">
+                {group.category}
+              </span>
+              <div class="flex flex-wrap gap-1.5">
+                {group.items.map(skill => (
+                  <span key={skill} class="text-[11px] px-2.5 py-1 rounded bg-[#0b121e] border border-[#1d2a3e] text-gray-300">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  </div>
+</Layout>

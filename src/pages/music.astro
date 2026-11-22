@@ -1,0 +1,74 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { AudioSynthesizer } from '../components/AudioSynthesizer';
+---
+
+<Layout title="Indian Classical Sarod & Classical Piano — Max">
+  <div class="space-y-10 font-mono">
+    <!-- Header -->
+    <div class="border-b border-[#162334] pb-6 space-y-2">
+      <div class="inline-flex items-center space-x-2 text-xs text-amber-400">
+        <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+        <span>ACOUSTIC SOUNDSTAGE // CLASSICAL MUSIC</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white">
+        The Indian Classical Sarod & Polyphonic Piano
+      </h1>
+      <p class="text-sm text-gray-400 max-w-3xl leading-relaxed">
+        Exploring the pure mathematical geometry of pitch: continuous microtonal meend on the fretless steel fingerboard of the Sarod, Western classical counterpoint on piano, and algorithmic sound synthesis.
+      </p>
+    </div>
+
+    <!-- Interactive Synthesizer Section -->
+    <AudioSynthesizer client:load />
+
+    <!-- Sarod Tradition Deep Dive -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+      <div class="p-6 rounded-lg bg-[#070c14] border border-amber-900/40 space-y-4">
+        <div class="flex items-center space-x-2 text-xs text-amber-400 font-bold uppercase tracking-wider">
+          <span>01 //</span>
+          <span>THE INDIAN CLASSICAL SAROD</span>
+        </div>
+        <h2 class="text-lg font-bold text-white">
+          Fretless Stainless Steel & Microtonal Sliding (Meend)
+        </h2>
+        <p class="text-xs text-gray-300 leading-relaxed bg-[#03060a] p-4 rounded border border-[#141e2e]">
+          The Sarod is one of the premier instruments of North Indian classical music. Its fingerboard is made of seamless polished stainless steel with no frets, mounted over a resonator covered in stretched goat skin. Notes are played using the edge of the fingernails rather than fingertips, enabling unbroken microtonal glides across multiple octaves.
+        </p>
+        <div class="space-y-2 text-xs text-gray-400">
+          <div class="flex items-center space-x-2">
+            <span class="text-amber-400">▹</span>
+            <span>Up to 25 strings: 4 main melody strings, 2 chikari rhythm strings, and 15 sympathetic strings (tarab) that resonate spontaneously at pure harmonic intervals.</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <span class="text-amber-400">▹</span>
+            <span>Ragas explored: Darbari Kanada, Yaman, Bhairav, Malkauns, and Todi.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-6 rounded-lg bg-[#070c14] border border-[#162334] space-y-4">
+        <div class="flex items-center space-x-2 text-xs text-cyan-400 font-bold uppercase tracking-wider">
+          <span>02 //</span>
+          <span>THE WESTERN CLASSICAL PIANO</span>
+        </div>
+        <h2 class="text-lg font-bold text-white">
+          Acoustic Counterpoint & Polyphonic Rigor
+        </h2>
+        <p class="text-xs text-gray-300 leading-relaxed bg-[#03060a] p-4 rounded border border-[#141e2e]">
+          While the Sarod represents linear, continuous melodic exploration in pure just intonation, the piano represents simultaneous harmonic architecture. The study of Western classical piano focuses on rigorous counterpoint, voice leading, and dynamic touch control.
+        </p>
+        <div class="space-y-2 text-xs text-gray-400">
+          <div class="flex items-center space-x-2">
+            <span class="text-cyan-400">▹</span>
+            <span>Repertoire interests: J.S. Bach (Inventions, Well-Tempered Clavier fugues), Frédéric Chopin (Nocturnes, Etudes), and Sergei Rachmaninoff.</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <span class="text-cyan-400">▹</span>
+            <span>Algorithmic application: Feeding voice-leading rules into <a href="/projects/algorithmic-music-app" class="text-emerald-400 underline">AlgorithmicMusicApp</a>.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,133 @@
+---
+import '../styles/global.css';
+import { Navbar } from '../components/Navbar';
+import { SearchModal } from '../components/SearchModal';
+import { profile } from '../data/profile';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = "Koundinya Gajulapalli (Max) — Theoretical Physics & Systems",
+  description = "Personal digital world of Koundinya Gajulapalli (Max). Exploring theoretical physics, relational cosmology in 5D bulks, Linux systems engineering, Sarod acoustics, and endurance cycling.",
+  image = "/research/GalaxyCurve.png"
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="author" content="Koundinya Gajulapalli (Max)" />
+    <meta name="theme-color" content="#030508" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={image} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- KaTeX CSS for LaTeX math rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+  </head>
+  <body class="bg-void text-gray-200 min-h-screen flex flex-col font-sans selection:bg-emerald-500/30 selection:text-emerald-300">
+    <!-- Atmospheric background light elements -->
+    <div class="fixed top-0 left-1/4 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none -z-10" />
+    <div class="fixed bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none -z-10" />
+    <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-500/3 rounded-full blur-3xl pointer-events-none -z-10" />
+
+    <!-- Persistent Navigation Bar -->
+    <Navbar client:load currentPath={currentPath} />
+
+    <!-- Global Search Modal (Ctrl+K) -->
+    <SearchModal client:load />
+
+    <!-- Main Content Area -->
+    <main class="flex-grow pt-20 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+      <slot />
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="border-t border-[#141e2e] bg-[#020407] font-mono text-xs text-gray-500 py-12 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+        <!-- Col 1: Bio & Manifesto -->
+        <div class="md:col-span-2 space-y-3">
+          <div class="flex items-center space-x-2">
+            <div class="w-2.5 h-2.5 rounded-full bg-emerald-400" />
+            <span class="text-white font-bold text-sm tracking-wider">MAX // Koundinya Gajulapalli</span>
+          </div>
+          <p class="text-xs text-gray-400 leading-relaxed max-w-lg">
+            Independent researcher in theoretical cosmology, relational quantum gravity, and low-level Linux systems. 
+            Rejecting bloated abstractions; investigating the fundamental structure of reality from first principles.
+          </p>
+          <div className="pt-2 text-[11px] text-emerald-400/90 italic font-mono border-l-2 border-emerald-500/40 pl-3">
+            "Governments seek control. Corporations seek influence. Trust neither blindly."
+          </div>
+        </div>
+
+        <!-- Col 2: Exploration Nodes -->
+        <div class="space-y-2">
+          <span class="text-xs text-gray-300 font-bold uppercase tracking-wider block">EXPLORATION</span>
+          <ul class="space-y-1.5 text-xs text-gray-400">
+            <li><a href="/research" class="hover:text-emerald-400 transition-colors">5D Bulk Cosmology</a></li>
+            <li><a href="/projects" class="hover:text-emerald-400 transition-colors">Systems Projects</a></li>
+            <li><a href="/world" class="hover:text-emerald-400 transition-colors">Interactive World Map</a></li>
+            <li><a href="/astronomy" class="hover:text-emerald-400 transition-colors">Celestial Observatory</a></li>
+            <li><a href="/music" class="hover:text-emerald-400 transition-colors">Sarod & Microtonal Audio</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Network & Verification -->
+        <div class="space-y-2">
+          <span class="text-xs text-gray-300 font-bold uppercase tracking-wider block">CHANNELS & TELEMETRY</span>
+          <ul class="space-y-1.5 text-xs text-gray-400">
+            <li><a href={profile.contact.github} target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition-colors">GitHub (KoundinyaG-7313)</a></li>
+            <li><a href="/contact" class="hover:text-emerald-400 transition-colors">ProtonMail & GPG</a></li>
+            <li><a href="/publications" class="hover:text-emerald-400 transition-colors">ORCID: {profile.contact.orcidId}</a></li>
+            <li><a href="/uses" class="hover:text-emerald-400 transition-colors">Arch Linux // Hyprland</a></li>
+            <li><a href="/privacy" class="hover:text-emerald-400 transition-colors">Privacy: Zero Tracking</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto pt-8 mt-8 border-t border-[#0f1724] flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px]">
+        <div>
+          &copy; {new Date().getFullYear()} Koundinya Gajulapalli (Max). Free & Open-Source.
+        </div>
+        <div class="flex items-center space-x-3 text-gray-400">
+          <span>HOST: GITHUB_PAGES</span>
+          <span>•</span>
+          <span>ENGINE: ASTRO_5_KATEX</span>
+          <span>•</span>
+          <span class="text-emerald-400">LATENCY: MINIMAL</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

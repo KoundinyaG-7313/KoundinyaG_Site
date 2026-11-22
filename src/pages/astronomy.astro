@@ -1,0 +1,89 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { observationLogs, telescopeGear } from '../data/astronomy';
+---
+
+<Layout title="Celestial Observatory & Astrophotography — Max">
+  <div class="space-y-10 font-mono">
+    <!-- Header -->
+    <div class="border-b border-[#162334] pb-6 space-y-2">
+      <div class="inline-flex items-center space-x-2 text-xs text-cyan-400">
+        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+        <span>ASTRONOMY NODE // PHOTON REGISTRY</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white">
+        Celestial Observatory & Astrophotography
+      </h1>
+      <p class="text-sm text-gray-400 max-w-3xl leading-relaxed">
+        High-magnification optical observations, deep-sky photon accumulation, telescope alignment, and Linux image calibration pipelines.
+      </p>
+    </div>
+
+    <!-- Telescope Optical Rig Specs -->
+    <div class="p-6 rounded-lg bg-[#070c14] border border-cyan-900/40 space-y-4">
+      <h2 class="text-xs font-bold text-cyan-400 uppercase tracking-wider">
+        OPTICAL INSTRUMENTATION & CALIBRATION HARDWARE
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {telescopeGear.map((gear, idx) => (
+          <div key={idx} class="p-3.5 rounded bg-[#03060a] border border-[#141e2e] space-y-1">
+            <span class="text-[10px] text-gray-500 uppercase block font-bold">{gear.category}</span>
+            <span class="text-xs font-bold text-white block">{gear.item}</span>
+            <p class="text-xs text-gray-400 leading-relaxed">
+              {gear.specs}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Observation Logs Grid -->
+    <div class="space-y-4">
+      <h2 class="text-base font-bold text-white uppercase tracking-wider flex items-center space-x-2">
+        <span class="text-cyan-400">LOGS //</span>
+        <span>DEEP-SKY OBSERVATION TARGETS</span>
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {observationLogs.map((obs) => (
+          <div 
+            key={obs.id}
+            class="p-6 rounded-lg bg-[#070c14] border border-[#162334] hover:border-cyan-500/40 transition-all space-y-4"
+          >
+            <div class="flex items-center justify-between text-xs border-b border-[#141e2e] pb-3">
+              <span class="text-cyan-300 font-bold">{obs.target}</span>
+              <span class="text-gray-500 text-[10px]">{obs.catalog}</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <div class="p-2 rounded bg-[#03060a] border border-[#141e2e]">
+                <span class="text-[10px] text-gray-500 block">CONSTELLATION</span>
+                <span class="text-white font-bold">{obs.constellation}</span>
+              </div>
+              <div class="p-2 rounded bg-[#03060a] border border-[#141e2e]">
+                <span class="text-[10px] text-gray-500 block">TYPE</span>
+                <span class="text-white font-bold">{obs.type}</span>
+              </div>
+            </div>
+
+            <p class="text-xs text-gray-300 leading-relaxed bg-[#03060a] p-3 rounded border border-[#141e2e]">
+              {obs.notes}
+            </p>
+
+            <div class="grid grid-cols-2 gap-2 text-[11px] pt-1 border-t border-[#141e2e] text-gray-400">
+              <div>
+                <span class="text-gray-500">EXPOSURE:</span> {obs.exposure}
+              </div>
+              <div>
+                <span class="text-gray-500">ISO:</span> {obs.iso}
+              </div>
+              <div class="col-span-2 text-[10px] text-cyan-400/80">
+                COORDINATES: RA {obs.coordinates.ra} // DEC {obs.coordinates.dec}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,179 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { researchProjects, type ResearchProject } from '../../data/research';
+import { MathBlock } from '../../components/MathBlock';
+
+export function getStaticPaths() {
+  return researchProjects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+interface Props {
+  project: ResearchProject;
+}
+
+const { project } = Astro.props;
+---
+
+<Layout title={`${project.title} — Research Dossier`}>
+  <div class="space-y-10 font-mono">
+    <!-- Breadcrumbs -->
+    <div class="flex items-center space-x-2 text-xs text-gray-500">
+      <a href="/" class="hover:text-emerald-400">Home</a>
+      <span>/</span>
+      <a href="/research" class="hover:text-emerald-400">Research</a>
+      <span>/</span>
+      <span class="text-emerald-400">{project.slug}</span>
+    </div>
+
+    <!-- Title and Metadata Header -->
+    <div class="p-6 sm:p-8 rounded-lg bg-[#070c14] border border-[#162334] space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-2 text-xs border-b border-[#141e2e] pb-3">
+        <span class="text-emerald-400 font-bold uppercase tracking-wider">
+          {project.category}
+        </span>
+        <div class="flex items-center space-x-3 text-gray-400">
+          <span>Date: {project.date}</span>
+          <span>•</span>
+          <span class="text-cyan-400">{project.status}</span>
+        </div>
+      </div>
+
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-white leading-tight">
+        {project.title}
+      </h1>
+
+      <div class="flex flex-wrap items-center justify-between gap-4 pt-2 text-xs text-gray-400">
+        <div>
+          <span class="text-gray-500">Primary Investigator:</span> <span class="text-white font-bold">{project.authors.join(', ')}</span>
+        </div>
+        {project.doi && (
+          <div class="px-2 py-1 rounded bg-[#03060a] border border-[#141e2e] text-[11px] text-gray-400">
+            DOI: {project.doi}
+          </div>
+        )}
+      </div>
+
+      <!-- Action buttons -->
+      {project.pdfPath && (
+        <div class="pt-4 flex flex-wrap gap-3">
+          <a
+            href={project.pdfPath}
+            download
+            class="px-5 py-2.5 rounded bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-all shadow-cyber-sm text-xs flex items-center space-x-2"
+          >
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <span>DOWNLOAD COMPLETE MANUSCRIPT (PDF)</span>
+          </a>
+          <a
+            href={project.pdfPath}
+            target="_blank"
+            class="px-5 py-2.5 rounded bg-[#0d1624] border border-cyan-500/40 text-cyan-300 hover:bg-[#131f32] transition-all text-xs"
+          >
+            OPEN IN BROWSER
+          </a>
+        </div>
+      )}
+    </div>
+
+    <!-- Abstract Box -->
+    <div class="p-6 rounded-lg bg-[#070c14] border border-emerald-900/40 space-y-3">
+      <h2 class="text-xs font-bold text-emerald-400 uppercase tracking-wider">
+        FORMAL SCIENTIFIC ABSTRACT
+      </h2>
+      <p class="text-xs sm:text-sm text-gray-300 leading-relaxed font-serif bg-[#03060a] p-5 rounded border border-[#141e2e]">
+        {project.abstract}
+      </p>
+    </div>
+
+    <!-- Key Mathematical Formulations -->
+    {project.keyEquations && project.keyEquations.length > 0 && (
+      <div class="p-6 sm:p-8 rounded-lg bg-[#070c14] border border-[#162334] space-y-6">
+        <h2 class="text-base font-bold text-white uppercase tracking-wider flex items-center space-x-2">
+          <span class="text-cyan-400">EQUATIONS //</span>
+          <span>MATHEMATICAL FRAMEWORK & HAMILTONIAN CONSTRAINTS</span>
+        </h2>
+        
+        <div class="space-y-6">
+          {project.keyEquations.map((eq, idx) => (
+            <div key={idx} class="p-4 rounded bg-[#03060a] border border-[#141e2e] space-y-2">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-cyan-300 font-mono">{eq.label}</span>
+                <span class="text-[10px] text-gray-500 font-mono">EQ ({idx + 1})</span>
+              </div>
+              <div class="py-2 bg-[#020407] rounded border border-[#0d1522]">
+                <MathBlock client:visible latex={eq.latex} />
+              </div>
+              <p class="text-xs text-gray-400 font-mono leading-relaxed pt-1">
+                {eq.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- Detailed Analysis -->
+    <div class="p-6 sm:p-8 rounded-lg bg-[#070c14] border border-[#162334] space-y-4">
+      <h2 class="text-base font-bold text-white uppercase tracking-wider flex items-center space-x-2">
+        <span class="text-emerald-400">ANALYSIS //</span>
+        <span>THEORETICAL DERIVATION & PHENOMENOLOGY</span>
+      </h2>
+      
+      <div class="space-y-4 text-xs sm:text-sm text-gray-300 leading-relaxed">
+        {project.detailedAnalysis.map((paragraph, i) => (
+          <p key={i} class="p-3 rounded bg-[#03060a]/70 border border-[#121c2c]">
+            {paragraph}
+          </p>
+        ))}
+      </div>
+    </div>
+
+    <!-- Numerical Simulation Figures -->
+    {project.figures && project.figures.length > 0 && (
+      <div class="p-6 sm:p-8 rounded-lg bg-[#070c14] border border-[#162334] space-y-6">
+        <h2 class="text-base font-bold text-white uppercase tracking-wider flex items-center space-x-2">
+          <span class="text-purple-400">DATA & FIGURES //</span>
+          <span>NUMERICAL INTEGRATION & PHENOMENOLOGY GRAPHS</span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {project.figures.map((fig, idx) => (
+            <div key={idx} class="rounded-lg border border-[#141e2e] bg-[#03060a] overflow-hidden space-y-3 p-3">
+              <div class="aspect-[16/10] bg-[#010204] rounded overflow-hidden border border-[#0d1522]">
+                <img src={fig.path} alt={fig.title} class="w-full h-full object-contain" />
+              </div>
+              <div>
+                <span class="text-xs font-bold text-white block">{fig.title}</span>
+                <p class="text-xs text-gray-400 mt-1 leading-relaxed">
+                  {fig.desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- PDF Reader Embed -->
+    {project.pdfPath && (
+      <div class="p-6 rounded-lg bg-[#070c14] border border-[#162334] space-y-4">
+        <div class="flex items-center justify-between">
+          <h2 class="text-xs font-bold text-white uppercase tracking-wider">
+            DOCUMENT VIEWER // {project.slug.toUpperCase()}.PDF
+          </h2>
+          <a href={project.pdfPath} target="_blank" class="text-xs text-emerald-400 hover:underline">
+            Open in new tab &rarr;
+          </a>
+        </div>
+        <div class="w-full h-[600px] rounded border border-[#141e2e] overflow-hidden bg-black">
+          <iframe src={project.pdfPath} class="w-full h-full" title={project.title}></iframe>
+        </div>
+      </div>
+    )}
+  </div>
+</Layout>

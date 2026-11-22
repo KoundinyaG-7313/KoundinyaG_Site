@@ -1,0 +1,118 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const linkGroups = [
+  {
+    category: "Foundations of Theoretical Physics & Relativity",
+    links: [
+      {
+        title: "The End of Time — Julian Barbour",
+        url: "https://en.wikipedia.org/wiki/The_End_of_Time_(book)",
+        description: "The seminal exploration of timeless Machian relational dynamics and configuration space (Platonia)."
+      },
+      {
+        title: "Quantum Gravity — Carlo Rovelli",
+        url: "http://www.cpt.univ-mrs.fr/~rovelli/book.pdf",
+        description: "Comprehensive treatise on the Problem of Time, diffeomorphism invariance, and loop quantum gravity."
+      },
+      {
+        title: "Singularities and Spacetime Geometry — Roger Penrose",
+        url: "https://en.wikipedia.org/wiki/Penrose%E2%80%93Hawking_singularity_theorems",
+        description: "Topological proofs of gravitational collapse and cosmological singularity theorems."
+      },
+      {
+        title: "Dirac's Lectures on Quantum Mechanics",
+        url: "https://en.wikipedia.org/wiki/Paul_Dirac",
+        description: "Primary formulation of Hamiltonian constraint mechanics and canonical quantization on curved surfaces."
+      }
+    ]
+  },
+  {
+    category: "Systems Engineering, Kernels & Open Source",
+    links: [
+      {
+        title: "The Linux Kernel Documentation",
+        url: "https://docs.kernel.org/",
+        description: "First-principles documentation of procfs, sysfs, memory management, and eBPF tracing subsystems."
+      },
+      {
+        title: "Arch Linux Wiki",
+        url: "https://wiki.archlinux.org/",
+        description: "The most rigorous documentation of modern userspace Linux, systemd, Wayland, and audio architecture."
+      },
+      {
+        title: "Rust Language Performance Book",
+        url: "https://nnethercote.github.io/perf-book/",
+        description: "Eliminating allocations, tuning cache lines, and writing zero-overhead systems software."
+      }
+    ]
+  },
+  {
+    category: "Indian Classical Music & Acoustics",
+    links: [
+      {
+        title: "The 22 Shrutis of Indian Classical Music",
+        url: "https://en.wikipedia.org/wiki/Shruti_(music)",
+        description: "Harmonic mathematics of microtonal intervals derived from pure fifths and thirds."
+      },
+      {
+        title: "Sarod Construction & Acoustics",
+        url: "https://en.wikipedia.org/wiki/Sarod",
+        description: "Acoustical mechanics of the stainless-steel fingerboard, skin membrane, and sympathetic resonance."
+      }
+    ]
+  }
+];
+---
+
+<Layout title="Curated Links & Webring — Max">
+  <div class="space-y-10 font-mono">
+    <!-- Header -->
+    <div class="border-b border-[#162334] pb-6 space-y-2">
+      <div class="inline-flex items-center space-x-2 text-xs text-cyan-400">
+        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+        <span>INDEX // CURATED LINKS & WEBRING</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white">
+        Curated Links & Foundational References
+      </h1>
+      <p class="text-sm text-gray-400 max-w-3xl leading-relaxed">
+        Essential texts, papers, and architectural resources that define my thinking across physics, computing, and music.
+      </p>
+    </div>
+
+    <!-- Link Groups Grid -->
+    <div class="space-y-8">
+      {linkGroups.map((group) => (
+        <div key={group.category} class="p-6 rounded-lg bg-[#070c14] border border-[#162334] space-y-4">
+          <h2 class="text-sm font-bold text-white uppercase tracking-wider flex items-center space-x-2 border-b border-[#141e2e] pb-2">
+            <span class="text-emerald-400">▹</span>
+            <span>{group.category}</span>
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {group.links.map((link) => (
+              <a
+                key={link.title}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="p-4 rounded bg-[#03060a] border border-[#141e2e] hover:border-emerald-500/40 transition-all space-y-1 group block"
+              >
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-bold text-white group-hover:text-emerald-300 transition-colors">
+                    {link.title}
+                  </span>
+                  <span class="text-[10px] text-gray-500">↗</span>
+                </div>
+                <p class="text-xs text-gray-400 leading-relaxed pt-1">
+                  {link.description}
+                </p>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</Layout>

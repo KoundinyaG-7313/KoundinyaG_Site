@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { profile } from '../data/profile';
+---
+
+<Layout title="Now — What Max is Doing Currently">
+  <div class="space-y-10 font-mono">
+    <!-- Header -->
+    <div class="border-b border-[#162334] pb-6 space-y-2">
+      <div class="inline-flex items-center space-x-2 text-xs text-emerald-400">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>STATUS REGISTRY // /NOW</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white">
+        What I'm Doing Now
+      </h1>
+      <p class="text-sm text-gray-400 max-w-3xl leading-relaxed">
+        Inspired by Derek Sivers' /now page movement. A live snapshot of current research, software builds, music practice, and physical training.
+      </p>
+      <div class="pt-1 text-xs text-gray-500">
+        LAST UPDATED: NOVEMBER 2026 // BENGALURU, INDIA
+      </div>
+    </div>
+
+    <!-- Active Streams Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- 01: Theoretical Physics -->
+      <div class="p-6 rounded-lg bg-[#070c14] border border-emerald-900/40 space-y-3">
+        <div class="flex items-center space-x-2 text-xs text-emerald-400 font-bold uppercase tracking-wider">
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          <span>THEORETICAL PHYSICS RESEARCH</span>
+        </div>
+        <h2 class="text-base font-bold text-white">
+          Boundary States in 5D Ultrahyperbolic Bulks
+        </h2>
+        <p class="text-xs text-gray-300 leading-relaxed bg-[#03060a] p-3.5 rounded border border-[#141e2e]">
+          Refining mathematical derivations of the relational Hamiltonian constraint across signature transition hypersurfaces. Computing conformal boundary state distributions to ensure stability over infinite cyclic bounces.
+        </p>
+      </div>
+
+      <!-- 02: Systems Engineering -->
+      <div class="p-6 rounded-lg bg-[#070c14] border border-[#162334] space-y-3">
+        <div class="flex items-center space-x-2 text-xs text-cyan-400 font-bold uppercase tracking-wider">
+          <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+          <span>SYSTEMS & LINUX CODING</span>
+        </div>
+        <h2 class="text-base font-bold text-white">
+          Omni-Dashboard Telemetry Daemon
+        </h2>
+        <p class="text-xs text-gray-300 leading-relaxed bg-[#03060a] p-3.5 rounded border border-[#141e2e]">
+          Benchmarking memory latency of procfs ring-buffer parsing under heavy CPU contention. Ensuring zero memory allocations in the telemetry critical path on Arch Linux.
+        </p>
+      </div>
+
+      <!-- 03: Music Practice -->
+      <div class="p-6 rounded-lg bg-[#070c14] border border-[#162334] space-y-3">
+        <div class="flex items-center space-x-2 text-xs text-amber-400 font-bold uppercase tracking-wider">
+          <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+          <span>ACOUSTICS & PRACTICE</span>
+        </div>
+        <h2 class="text-base font-bold text-white">
+          Sarod Meend Intonation & Raga Darbari
+        </h2>
+        <p class="text-xs text-gray-300 leading-relaxed bg-[#03060a] p-3.5 rounded border border-[#141e2e]">
+          Practicing continuous microtonal glides (meend) between Komal Gandhar ($g_1$) and Rishabh on fretless steel. Playing Bach's two-part inventions on the piano for polyphonic discipline.
+        </p>
+      </div>
+
+      <!-- 04: Athletics -->
+      <div class="p-6 rounded-lg bg-[#070c14] border border-[#162334] space-y-3">
+        <div class="flex items-center space-x-2 text-xs text-purple-400 font-bold uppercase tracking-wider">
+          <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+          <span>ATHLETICS & ENDURANCE</span>
+        </div>
+        <h2 class="text-base font-bold text-white">
+          High-Altitude Climbing & Cadence Training
+        </h2>
+        <p class="text-xs text-gray-300 leading-relaxed bg-[#03060a] p-3.5 rounded border border-[#141e2e]">
+          Logging weekend solo century cycling routes (100–120 km) with sustained elevation gain. Maintaining 90+ RPM climbing cadence while monitoring threshold power output.
+        </p>
+      </div>
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,74 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout title={`${post.data.title} — Max's Blog`}>
+  <div class="space-y-8 font-mono max-w-4xl mx-auto">
+    <!-- Breadcrumbs -->
+    <div class="flex items-center space-x-2 text-xs text-gray-500">
+      <a href="/" class="hover:text-emerald-400">Home</a>
+      <span>/</span>
+      <a href="/blog" class="hover:text-emerald-400">Blog</a>
+      <span>/</span>
+      <span class="text-purple-400">{post.slug}</span>
+    </div>
+
+    <!-- Article Header -->
+    <header class="p-6 sm:p-8 rounded-lg bg-[#070c14] border border-[#162334] space-y-4">
+      <div class="flex flex-wrap items-center justify-between text-xs border-b border-[#141e2e] pb-3 gap-2">
+        <span class="text-purple-400 font-bold uppercase tracking-wider">
+          {post.data.category}
+        </span>
+        <span class="text-gray-500">{post.data.date}</span>
+      </div>
+
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-white leading-tight">
+        {post.data.title}
+      </h1>
+
+      <p class="text-sm text-gray-400 leading-relaxed font-sans">
+        {post.data.description}
+      </p>
+
+      <div class="flex flex-wrap gap-1.5 pt-2">
+        {post.data.tags.map(t => (
+          <span key={t} class="text-[10px] px-2 py-0.5 rounded bg-[#0b121e] text-gray-400 border border-[#1d2a3e]">
+            #{t}
+          </span>
+        ))}
+      </div>
+    </header>
+
+    <!-- Post Markdown Content -->
+    <article class="p-6 sm:p-10 rounded-lg bg-[#070c14] border border-[#162334] text-gray-200 prose prose-invert max-w-none space-y-6 text-sm leading-relaxed font-sans">
+      <Content />
+    </article>
+
+    <!-- Footer Navigation -->
+    <div class="pt-6 border-t border-[#141e2e] flex items-center justify-between text-xs">
+      <a href="/blog" class="text-emerald-400 hover:underline flex items-center space-x-1">
+        <span>&larr;</span>
+        <span>Back to All Articles</span>
+      </a>
+      <a href="/research" class="text-cyan-400 hover:underline">
+        Explore Theoretical Research Papers &rarr;
+      </a>
+    </div>
+  </div>
+</Layout>

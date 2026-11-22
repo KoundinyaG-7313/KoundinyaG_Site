@@ -1,0 +1,92 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { profile } from '../data/profile';
+---
+
+<Layout title="Contact & Cryptographic Verification — Max">
+  <div class="space-y-10 font-mono">
+    <!-- Header -->
+    <div class="border-b border-[#162334] pb-6 space-y-2">
+      <div class="inline-flex items-center space-x-2 text-xs text-emerald-400">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>COMMUNICATION NODE // SECURE CHANNELS</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white">
+        Contact & Verified Identity
+      </h1>
+      <p class="text-sm text-gray-400 max-w-3xl leading-relaxed">
+        Direct, unmonitored communication channels. Prefer encrypted email via ProtonMail or signed GPG correspondence for sensitive inquiries.
+      </p>
+    </div>
+
+    <!-- Verified Channels Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Channel 1: ProtonMail -->
+      <div class="p-6 rounded-lg bg-[#070c14] border border-emerald-900/40 space-y-3">
+        <div class="flex items-center justify-between text-xs border-b border-[#141e2e] pb-2">
+          <span class="text-emerald-400 font-bold uppercase tracking-wider">PRIMARY ENCRYPTED EMAIL</span>
+          <span class="text-gray-500">PROTON</span>
+        </div>
+        <h2 class="text-lg font-bold text-white">
+          koundinyag@protonmail.com
+        </h2>
+        <p class="text-xs text-gray-400 leading-relaxed">
+          Zero-access encryption by default. Use for research discussions, systems collaborations, or private correspondence.
+        </p>
+        <div class="pt-2">
+          <a 
+            href={`mailto:${profile.contact.email}`}
+            class="px-4 py-2 rounded bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-colors inline-block text-xs"
+          >
+            DISPATCH EMAIL &rarr;
+          </a>
+        </div>
+      </div>
+
+      <!-- Channel 2: GitHub -->
+      <div class="p-6 rounded-lg bg-[#070c14] border border-[#162334] space-y-3">
+        <div class="flex items-center justify-between text-xs border-b border-[#141e2e] pb-2">
+          <span class="text-cyan-400 font-bold uppercase tracking-wider">CODE & ISSUES</span>
+          <span class="text-gray-500">GIT PROTOCOL</span>
+        </div>
+        <h2 class="text-lg font-bold text-white">
+          @{profile.contact.githubUser}
+        </h2>
+        <p class="text-xs text-gray-400 leading-relaxed">
+          Submit issues, pull requests, or explore codebases directly on GitHub.
+        </p>
+        <div class="pt-2">
+          <a 
+            href={profile.contact.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-4 py-2 rounded bg-[#0b121e] border border-[#1d2a3e] text-white hover:bg-[#121d30] transition-colors inline-block text-xs"
+          >
+            OPEN GITHUB PROFILE &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PGP / GPG Cryptographic Key Card -->
+    <div class="p-6 sm:p-8 rounded-lg bg-[#070c14] border border-[#162334] space-y-4">
+      <div class="flex items-center justify-between text-xs border-b border-[#141e2e] pb-3">
+        <span class="text-amber-400 font-bold uppercase tracking-wider">
+          CRYPTOGRAPHIC KEY IDENTIFIER // GPG
+        </span>
+        <span class="text-gray-500">RSA 4096 / ED25519</span>
+      </div>
+
+      <div>
+        <span class="text-xs text-gray-400 block mb-1">KEY FINGERPRINT:</span>
+        <div class="p-4 rounded bg-[#03060a] border border-[#141e2e] text-xs font-mono text-emerald-400 select-all">
+          {profile.contact.gpgKeyFingerprint}
+        </div>
+      </div>
+
+      <p class="text-xs text-gray-400 leading-relaxed">
+        All software releases and official correspondence can be verified against this key fingerprint.
+      </p>
+    </div>
+  </div>
+</Layout>

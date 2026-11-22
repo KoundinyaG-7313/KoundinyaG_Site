@@ -1,0 +1,117 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { researchProjects } from '../../data/research';
+import { MathBlock } from '../../components/MathBlock';
+---
+
+<Layout title="Theoretical Physics & Cosmology Research — Max">
+  <div class="space-y-10 font-mono">
+    <!-- Header -->
+    <div class="border-b border-[#162334] pb-6 space-y-2">
+      <div class="inline-flex items-center space-x-2 text-xs text-emerald-400">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>RESEARCH ARCHIVES // THEORETICAL PHYSICS</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white">
+        Cosmology & Relational Quantum Gravity
+      </h1>
+      <p class="text-sm text-gray-400 max-w-3xl leading-relaxed">
+        Investigating fundamental questions concerning relational time, higher-dimensional ultrahyperbolic spacetime geometries, non-singular cyclic cosmology, and the resolution of singularities in quantum gravity.
+      </p>
+    </div>
+
+    <!-- Research Projects Directory -->
+    <div class="space-y-8">
+      {researchProjects.map((paper) => (
+        <article 
+          key={paper.slug}
+          class="p-6 sm:p-8 rounded-lg bg-[#070c14] border border-[#162334] hover:border-emerald-500/50 transition-all space-y-6"
+        >
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#141e2e] pb-3 gap-2 text-xs">
+            <span class="text-emerald-400 font-bold uppercase tracking-wider">
+              {paper.category}
+            </span>
+            <div class="flex items-center space-x-3 text-gray-400">
+              <span>DATE: {paper.date}</span>
+              <span>•</span>
+              <span class="text-cyan-400">{paper.status}</span>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="text-xl sm:text-2xl font-bold text-white hover:text-emerald-300 transition-colors">
+              <a href={`/research/${paper.slug}`}>{paper.title}</a>
+            </h2>
+            <p class="text-xs text-gray-500 mt-1">
+              By {paper.authors.join(', ')}
+            </p>
+          </div>
+
+          <!-- Abstract -->
+          <div class="space-y-2">
+            <span class="text-[11px] text-gray-500 uppercase tracking-wider block font-bold">Abstract</span>
+            <p class="text-xs sm:text-sm text-gray-300 leading-relaxed bg-[#03060a] p-4 rounded border border-[#141e2e]">
+              {paper.abstract}
+            </p>
+          </div>
+
+          <!-- Sample Equation Preview -->
+          {paper.keyEquations && paper.keyEquations.length > 0 && (
+            <div class="p-3 bg-[#020407] rounded border border-[#141e2e] space-y-1">
+              <span class="text-[10px] text-gray-500 uppercase block font-bold">{paper.keyEquations[0].label}</span>
+              <MathBlock client:visible latex={paper.keyEquations[0].latex} />
+            </div>
+          )}
+
+          <!-- Figures Grid Preview if available -->
+          {paper.figures && paper.figures.length > 0 && (
+            <div class="space-y-2">
+              <span class="text-[11px] text-gray-500 uppercase tracking-wider block font-bold">Numerical Simulation Figures</span>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {paper.figures.map((fig, idx) => (
+                  <a key={idx} href={`/research/${paper.slug}`} class="block rounded border border-[#162334] overflow-hidden bg-[#03060a] group">
+                    <div class="aspect-[4/3] overflow-hidden">
+                      <img src={fig.path} alt={fig.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+                    </div>
+                    <div class="p-2 text-[10px] text-gray-400 group-hover:text-emerald-300 truncate">
+                      {fig.title}
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <!-- Footer Links & Topics -->
+          <div class="flex flex-wrap items-center justify-between pt-4 border-t border-[#141e2e] gap-4">
+            <div class="flex flex-wrap gap-1.5">
+              {paper.topics.map(t => (
+                <span key={t} class="text-[10px] px-2 py-0.5 rounded bg-[#0b121e] text-gray-400 border border-[#1d2a3e]">
+                  {t}
+                </span>
+              ))}
+            </div>
+
+            <div class="flex items-center space-x-3 text-xs">
+              {paper.pdfPath && (
+                <a 
+                  href={paper.pdfPath} 
+                  target="_blank" 
+                  class="px-3 py-1.5 rounded bg-emerald-500/10 border border-emerald-500/40 text-emerald-300 hover:bg-emerald-500/20 transition-all font-bold"
+                >
+                  Download PDF
+                </a>
+              )}
+              <a 
+                href={`/research/${paper.slug}`} 
+                class="px-4 py-1.5 rounded bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-colors"
+              >
+                Read Manuscript & Derivations &rarr;
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Privacy & Telemetry Policy — Max">
+  <div class="space-y-10 font-mono">
+    <!-- Header -->
+    <div class="border-b border-[#162334] pb-6 space-y-2">
+      <div class="inline-flex items-center space-x-2 text-xs text-emerald-400">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>POLICY // ZERO TELEMETRY MANIFESTO</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white">
+        Privacy, Sovereignty & Zero Tracking
+      </h1>
+      <p class="text-sm text-gray-400 max-w-3xl leading-relaxed">
+        Modern web software has devolved into surveillance capitalism. This website rejects user tracking completely.
+      </p>
+    </div>
+
+    <!-- The Core Commitments -->
+    <div class="p-6 sm:p-8 rounded-lg bg-[#070c14] border border-emerald-900/40 space-y-6">
+      <div class="border-b border-[#141e2e] pb-3 text-xs text-emerald-400 font-bold uppercase tracking-wider">
+        CORE PRIVACY INVARIANTS
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="p-4 rounded bg-[#03060a] border border-[#141e2e] space-y-2">
+          <span class="text-xs font-bold text-white flex items-center space-x-2">
+            <span class="text-emerald-400">✓</span>
+            <span>Zero Third-Party Trackers</span>
+          </span>
+          <p class="text-xs text-gray-400 leading-relaxed">
+            There are no Google Analytics, Facebook Pixels, Hotjar, or advertising tracking beacons embedded in this website. Ever.
+          </p>
+        </div>
+
+        <div class="p-4 rounded bg-[#03060a] border border-[#141e2e] space-y-2">
+          <span class="text-xs font-bold text-white flex items-center space-x-2">
+            <span class="text-emerald-400">✓</span>
+            <span>Zero Tracking Cookies</span>
+          </span>
+          <p class="text-xs text-gray-400 leading-relaxed">
+            No session cookies or tracking identifiers are placed on your machine. You will never see an annoying cookie consent banner here because there is nothing to consent to.
+          </p>
+        </div>
+
+        <div class="p-4 rounded bg-[#03060a] border border-[#141e2e] space-y-2">
+          <span class="text-xs font-bold text-white flex items-center space-x-2">
+            <span class="text-emerald-400">✓</span>
+            <span>Local-First Computation</span>
+          </span>
+          <p class="text-xs text-gray-400 leading-relaxed">
+            Features like search index querying, CRT scanline toggles, guestbook entries, and Web Audio synthesis run entirely client-side in your own browser's JavaScript engine.
+          </p>
+        </div>
+
+        <div class="p-4 rounded bg-[#03060a] border border-[#141e2e] space-y-2">
+          <span class="text-xs font-bold text-white flex items-center space-x-2">
+            <span class="text-emerald-400">✓</span>
+            <span>Static Generation</span>
+          </span>
+          <p class="text-xs text-gray-400 leading-relaxed">
+            All pages are pre-compiled into static HTML, CSS, and lightweight JS via Astro 5, served statically via GitHub Pages CDN without server logging databases.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Philosophical Note -->
+    <div class="p-6 rounded-lg bg-[#070c14] border border-[#162334] space-y-3">
+      <span class="text-xs font-bold text-gray-400 uppercase tracking-wider block">
+        PHILOSOPHICAL STANCE
+      </span>
+      <blockquote class="text-xs text-emerald-400/90 italic font-mono border-l-2 border-emerald-500/50 pl-4 py-1 leading-relaxed">
+        "Governments seek control. Corporations seek influence. Trust neither blindly. We rely on layers of abstractions we don't understand. It's time to build from the ground up."
+      </blockquote>
+      <p class="text-xs text-gray-400 leading-relaxed pt-2">
+        Data sovereignty is not merely a legal requirement; it is a fundamental design principle. The web should be an open library of knowledge and creative experimentation, not an extraction engine.
+      </p>
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,64 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { timelineEvents } from '../data/timeline';
+---
+
+<Layout title="Chronological Milestones — Max">
+  <div class="space-y-10 font-mono">
+    <!-- Header -->
+    <div class="border-b border-[#162334] pb-6 space-y-2">
+      <div class="inline-flex items-center space-x-2 text-xs text-emerald-400">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>TEMPORAL LEDGER // CHRONOLOGY</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white">
+        Chronological Milestones & Trajectory
+      </h1>
+      <p class="text-sm text-gray-400 max-w-3xl leading-relaxed">
+        Key progression markers across theoretical physics derivations, low-level Linux systems, classical Sarod acoustics, and solo endurance cycling century climbs.
+      </p>
+    </div>
+
+    <!-- Timeline Component -->
+    <div class="relative pl-6 sm:pl-8 border-l-2 border-[#162334] space-y-8 my-6">
+      {timelineEvents.map((evt) => (
+        <div key={evt.title} class="relative group">
+          <!-- Timeline Node Pin -->
+          <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-[#070c14] border-2 border-emerald-400 group-hover:bg-emerald-400 transition-colors" />
+
+          <!-- Event Card -->
+          <div class="p-6 rounded-lg bg-[#070c14] border border-[#162334] group-hover:border-emerald-500/40 transition-all space-y-3">
+            <div class="flex flex-wrap items-center justify-between gap-2 text-xs border-b border-[#141e2e] pb-2">
+              <span class="text-emerald-400 font-bold uppercase tracking-wider">
+                {evt.category}
+              </span>
+              <div class="flex items-center space-x-3 text-gray-400">
+                <span>{evt.date}</span>
+                <span class="text-[10px] px-2 py-0.5 rounded bg-[#0b121e] text-cyan-400 border border-[#162334]">
+                  {evt.badge}
+                </span>
+              </div>
+            </div>
+
+            <h2 class="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors">
+              {evt.title}
+            </h2>
+
+            <p class="text-xs sm:text-sm text-gray-300 leading-relaxed bg-[#03060a] p-3.5 rounded border border-[#141e2e]">
+              {evt.description}
+            </p>
+
+            {evt.link && (
+              <div class="pt-2">
+                <a href={evt.link} class="text-xs text-emerald-400 hover:underline flex items-center space-x-1">
+                  <span>Inspect Associated Artifact</span>
+                  <span>&rarr;</span>
+                </a>
+              </div>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</Layout>

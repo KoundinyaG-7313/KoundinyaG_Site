@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { GuestbookTerminal } from '../components/GuestbookTerminal';
+---
+
+<Layout title="Guestbook & Signal Ledger — Max">
+  <div class="space-y-10 font-mono">
+    <!-- Header -->
+    <div class="border-b border-[#162334] pb-6 space-y-2">
+      <div class="inline-flex items-center space-x-2 text-xs text-emerald-400">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>VISITOR LEDGER // GUESTBOOK</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white">
+        Guestbook & Transmission Terminal
+      </h1>
+      <p class="text-sm text-gray-400 max-w-3xl leading-relaxed">
+        Leave a signal in the local telemetry buffer. No third-party accounts, no telemetry tracking.
+      </p>
+    </div>
+
+    <!-- Interactive Terminal -->
+    <GuestbookTerminal client:load />
+  </div>
+</Layout>
