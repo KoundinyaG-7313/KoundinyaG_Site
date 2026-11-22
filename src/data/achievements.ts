@@ -33,12 +33,12 @@ export const achievements: Achievement[] = [
     details: "Engineered zero-overhead procfs parsing and telemetry streaming in Rust and C++ for Arch Linux workstations."
   },
   {
-    title: "Indian Classical Sarod & 22-Shruti Acoustic Mastery",
+    title: "Indian Classical Sarod & 22-Shruti Acoustic Exploration",
     category: "Music & Arts",
     date: "2024 - 2026",
-    significance: "Microtonal classical string tradition & mathematical synthesis",
-    metric: "Years of Practice / Raga Repertoire",
-    details: "Deep exploration of Indian classical music, microtonal meend sliding dynamics on fretless steel, and Western classical piano counterpoint."
+    significance: "Microtonal classical string study & algorithmic synthesis",
+    metric: "Sarod Ragas & Web Audio Engine",
+    details: "Exploration of Indian classical music, microtonal meend sliding dynamics on fretless steel, and Western classical piano counterpoint."
   },
   {
     title: "Arch Linux Workstation & Wayland Rice Optimization",

@@ -22,7 +22,7 @@ export const timelineEvents: TimelineEvent[] = [
     date: "November 2026",
     year: "2026",
     category: "Systems",
-    title: "Omni-Dashboard Linux Telemetry & eBPF Classifier",
+    title: "Omni-Dashboard Linux Telemetry & Process Classifier",
     description: "Expanded Omni-Dashboard into an ultra-low latency system profiler for Arch Linux with zero-overhead memory ring buffers and real-time process classification across 60 git commits.",
     badge: "Engineering",
     link: "/projects/omni-dashboard"

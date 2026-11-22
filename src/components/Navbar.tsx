@@ -18,26 +18,23 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath = '/' }) => {
   }, []);
 
   const mainLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'World', href: '/world' },
-    { name: 'About', href: '/about' },
     { name: 'Research', href: '/research' },
     { name: 'Projects', href: '/projects' },
+    { name: 'About', href: '/about' },
     { name: 'Blog', href: '/blog' },
+    { name: 'Music', href: '/music' },
     { name: 'Contact', href: '/contact' },
   ];
 
   const secondaryLinks = [
-    { name: 'Publications', href: '/publications' },
-    { name: 'GitHub Sync', href: '/github' },
+    { name: 'Publications (ORCID)', href: '/publications' },
+    { name: 'GitHub Telemetry', href: '/github' },
     { name: 'Astronomy', href: '/astronomy' },
-    { name: 'Music & Sarod', href: '/music' },
     { name: 'Timeline', href: '/timeline' },
     { name: 'Achievements', href: '/achievements' },
-    { name: 'Uses / Rice', href: '/uses' },
+    { name: 'Uses / Setup', href: '/uses' },
     { name: 'Now', href: '/now' },
-    { name: 'Guestbook', href: '/guestbook' },
-    { name: 'Links & Webring', href: '/links' },
+    { name: 'Curated Links', href: '/links' },
     { name: 'Privacy', href: '/privacy' },
   ];
 
@@ -49,62 +46,34 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath = '/' }) => {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 font-mono ${
       isScrolled 
-        ? 'bg-[#030508]/90 backdrop-blur-md border-b border-[#1d2a3e]' 
-        : 'bg-[#030508]/60 backdrop-blur-sm border-b border-[#1d2a3e]/40'
+        ? 'bg-[#030508]/95 backdrop-blur-md border-b border-[#1d2a3e]' 
+        : 'bg-[#030508]/80 backdrop-blur-sm border-b border-[#1d2a3e]/50'
     }`}>
-      {/* Top telemetry bar */}
-      <div className="hidden lg:flex items-center justify-between px-6 py-1 text-[11px] text-gray-500 border-b border-[#141e2e] bg-[#020305]/80 select-none">
-        <div className="flex items-center space-x-4">
-          <span className="flex items-center space-x-1.5 text-emerald-400">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            <span>SYS_STATUS: ONLINE</span>
-          </span>
-          <span className="text-gray-600">|</span>
-          <span className="text-gray-400">OS: ARCH_LINUX // HYPRLAND</span>
-          <span className="text-gray-600">|</span>
-          <span className="text-cyan-400/80">LATITUDE: 5D_BULK // ULTRAHYPERBOLIC</span>
-        </div>
-        <div className="flex items-center space-x-4">
-          <span className="text-gray-400">LOC: BENGALURU, IN</span>
-          <span className="text-gray-600">|</span>
-          <span className="text-amber-400/80">COMMITS: 93+ AUTHENTIC</span>
-          <span className="text-gray-600">|</span>
-          <button 
-            onClick={() => window.dispatchEvent(new CustomEvent('open-search'))}
-            className="text-gray-300 hover:text-emerald-400 flex items-center space-x-1 cursor-pointer"
-          >
-            <span className="border border-gray-700 rounded px-1 text-[10px]">Ctrl+K</span>
-            <span>Search</span>
-          </button>
-        </div>
-      </div>
-
-      {/* Main navigation row */}
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Brand identity */}
-        <a href="/" className="flex items-center space-x-2 group">
-          <div className="w-8 h-8 rounded bg-[#0d131e] border border-emerald-500/40 flex items-center justify-center text-emerald-400 font-bold text-sm group-hover:border-emerald-400 group-hover:shadow-cyber-sm transition-all">
+        <a href="/" className="flex items-center space-x-3 group">
+          <div className="w-8 h-8 rounded bg-[#0d131e] border border-emerald-500/40 flex items-center justify-center text-emerald-400 font-bold text-sm group-hover:border-emerald-400 transition-colors">
             M
           </div>
           <div className="flex flex-col">
             <span className="text-white font-bold tracking-wider text-sm group-hover:text-emerald-300 transition-colors">
-              MAX <span className="text-emerald-500 text-xs font-normal">/ Koundinya</span>
+              MAX <span className="text-gray-400 text-xs font-normal">/ Koundinya Gajulapalli</span>
             </span>
-            <span className="text-[10px] text-gray-500 -mt-1 hidden sm:block">Theoretical Physics & Systems</span>
+            <span className="text-[11px] text-gray-500 hidden sm:block">Theoretical Physics & Systems</span>
           </div>
         </a>
 
         {/* Desktop links */}
-        <div className="hidden md:flex items-center space-x-1">
+        <div className="hidden md:flex items-center space-x-1 text-xs">
           {mainLinks.map((link) => {
             const active = isActive(link.href);
             return (
               <a
                 key={link.name}
                 href={link.href}
-                className={`px-3 py-1.5 text-xs rounded transition-all ${
+                className={`px-3 py-1.5 rounded transition-colors ${
                   active
-                    ? 'hud-slot-active text-emerald-300 font-semibold'
+                    ? 'bg-emerald-500/10 text-emerald-400 font-semibold border border-emerald-500/30'
                     : 'text-gray-400 hover:text-white hover:bg-[#0d131e]'
                 }`}
               >
@@ -118,7 +87,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath = '/' }) => {
             <button
               onClick={() => setMoreDropdownOpen(!moreDropdownOpen)}
               onBlur={() => setTimeout(() => setMoreDropdownOpen(false), 200)}
-              className="px-3 py-1.5 text-xs rounded text-gray-400 hover:text-white hover:bg-[#0d131e] flex items-center space-x-1 transition-all"
+              className="px-3 py-1.5 rounded text-gray-400 hover:text-white hover:bg-[#0d131e] flex items-center space-x-1 transition-colors cursor-pointer"
             >
               <span>More</span>
               <svg className={`w-3 h-3 transition-transform ${moreDropdownOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -127,10 +96,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath = '/' }) => {
             </button>
 
             {moreDropdownOpen && (
-              <div className="absolute right-0 mt-2 w-56 rounded-md bg-[#0a0f18] border border-[#1d2a3e] shadow-2xl py-2 z-50 text-xs">
-                <div className="px-3 py-1 text-[10px] font-semibold text-gray-500 uppercase tracking-wider border-b border-[#141e2e]">
-                  Subsystems & Archives
-                </div>
+              <div className="absolute right-0 mt-2 w-52 rounded-md bg-[#0a0f18] border border-[#1d2a3e] shadow-2xl py-2 z-50 text-xs">
                 {secondaryLinks.map((sublink) => (
                   <a
                     key={sublink.name}
@@ -150,12 +116,13 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath = '/' }) => {
           {/* Quick search shortcut button */}
           <button
             onClick={() => window.dispatchEvent(new CustomEvent('open-search'))}
-            className="p-2 rounded text-gray-400 hover:text-emerald-400 hover:bg-[#0d131e] border border-transparent hover:border-[#1d2a3e] transition-all cursor-pointer"
+            className="flex items-center space-x-1.5 px-2.5 py-1.5 rounded text-xs text-gray-400 hover:text-white hover:bg-[#0d131e] border border-[#1d2a3e] transition-colors cursor-pointer"
             title="Search (Ctrl+K)"
           >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
+            <span className="hidden sm:inline text-[11px] text-gray-500">Ctrl+K</span>
           </button>
 
           {/* Mobile hamburger menu toggle */}
@@ -178,9 +145,6 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath = '/' }) => {
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-[#070b10] border-b border-[#1d2a3e] px-4 pt-2 pb-6 space-y-1">
-          <div className="text-[10px] text-emerald-500 font-semibold uppercase tracking-wider px-3 py-1">
-            Navigation Nodes
-          </div>
           {mainLinks.map((link) => (
             <a
               key={link.name}
@@ -195,10 +159,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath = '/' }) => {
             </a>
           ))}
           <div className="pt-2 border-t border-[#141e2e]">
-            <div className="text-[10px] text-gray-500 font-semibold uppercase tracking-wider px-3 py-1">
-              Archives & Modules
-            </div>
-            <div className="grid grid-cols-2 gap-1">
+            <div className="grid grid-cols-2 gap-1 pt-1">
               {secondaryLinks.map((sublink) => (
                 <a
                   key={sublink.name}

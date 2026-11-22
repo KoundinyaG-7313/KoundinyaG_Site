@@ -2,40 +2,30 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="404 — Lost in the Manifold Void">
-  <div class="py-16 text-center font-mono space-y-6 max-w-2xl mx-auto">
-    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-red-950/40 border border-red-500/40 text-red-400 text-xs">
-      <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
-      <span>ERROR CODE: 404 // SINGULARITY DEVIATION</span>
+<Layout title="404 — Page Not Found">
+  <div class="py-20 text-center font-mono space-y-5 max-w-xl mx-auto">
+    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#162334] text-gray-300 text-xs">
+      <span>HTTP 404</span>
     </div>
 
-    <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight">
-      SIGNAL LOST IN VOID
+    <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
+      Page Not Found
     </h1>
 
-    <div class="p-6 rounded-lg bg-[#070c14] border border-[#ff1e3c]/40 text-left space-y-3 shadow-arasaka-sm">
-      <div class="text-xs text-gray-500 border-b border-[#3a0f16] pb-2 flex justify-between">
-        <span class="text-[#ff1e3c] font-bold">emergency_recovery_shell.sh</span>
-        <span>STATUS: DISCONNECTED</span>
-      </div>
-      <p class="text-xs text-gray-300 leading-relaxed font-mono">
-        The requested hypersurface coordinate could not be resolved in this 5D spacetime projection. You have deviated into an unmapped signature transition region.
-      </p>
-      <div class="p-3 rounded bg-[#030001] border border-[#3a0f16] text-xs text-[#ff4d5e]">
-        <code>root@anti-code:~# teleport --safe-fallback home</code>
-      </div>
-    </div>
+    <p class="text-xs sm:text-sm text-gray-400 leading-relaxed">
+      The requested route does not exist or has been moved.
+    </p>
 
-    <!-- Quick Teleport Recovery Buttons -->
+    <!-- Quick Navigation Links -->
     <div class="pt-4 flex flex-wrap justify-center gap-3 text-xs">
       <a href="/" class="px-5 py-2.5 rounded bg-emerald-500 text-black font-bold hover:bg-emerald-400 transition-colors">
-        RE-ENTER HOMEPAGE &rarr;
-      </a>
-      <a href="/world" class="px-5 py-2.5 rounded bg-[#0d1522] border border-[#1d2a3e] text-cyan-300 hover:bg-[#131f32] transition-colors">
-        TOPOLOGICAL BIOME RADAR
+        Return Home &rarr;
       </a>
       <a href="/research" class="px-5 py-2.5 rounded bg-[#0d1522] border border-[#1d2a3e] text-white hover:bg-[#131f32] transition-colors">
-        RESEARCH PAPERS
+        Research
+      </a>
+      <a href="/projects" class="px-5 py-2.5 rounded bg-[#0d1522] border border-[#1d2a3e] text-white hover:bg-[#131f32] transition-colors">
+        Projects
       </a>
     </div>
   </div>

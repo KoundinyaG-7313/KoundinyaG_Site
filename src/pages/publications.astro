@@ -1,95 +1,92 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { publications } from '../data/publications';
 import { profile } from '../data/profile';
+import { researchProjects } from '../data/research';
+
+const paper = researchProjects[0];
 ---
 
-<Layout title="Publications & Manuscripts — Max">
+<Layout title="Publications & ORCID Registry — Max">
   <div class="space-y-10 font-mono">
     <!-- Header -->
-    <div class="border-b border-[#162334] pb-6 space-y-2">
-      <div class="inline-flex items-center space-x-2 text-xs text-emerald-400">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span>ACADEMIC REGISTRY // ORCID INTEGRATION</span>
+    <div class="border-b border-[#162334] pb-6 space-y-3">
+      <div class="flex items-center space-x-2 text-xs text-emerald-400">
+        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+        <span>ACADEMIC REGISTRY // ORCID</span>
       </div>
       <h1 class="text-3xl sm:text-4xl font-extrabold text-white">
-        Publications & Academic Manuscripts
+        Publications & Academic Records
       </h1>
       <p class="text-sm text-gray-400 max-w-3xl leading-relaxed">
-        Research papers, preprints, and theoretical monographs. Synchronized with public ORCID registry data without external runtime dependencies.
+        Formal academic identifiers, preprints, and registered scientific research works are indexed directly on my public ORCID profile.
       </p>
 
-      <div class="flex items-center space-x-3 pt-2 text-xs">
-        <span class="text-gray-500">ORCID ID:</span>
+      <div class="pt-1">
         <a 
           href={`https://orcid.org/${profile.contact.orcidId}`}
           target="_blank" 
           rel="noopener noreferrer"
-          class="px-2.5 py-1 rounded bg-[#0b121e] border border-emerald-500/40 text-emerald-300 hover:bg-[#101b2e] flex items-center space-x-1.5"
+          class="inline-flex items-center space-x-2 px-3 py-1.5 rounded bg-[#0d1624] border border-emerald-500/40 text-xs text-emerald-300 hover:bg-[#131f32] transition-colors"
         >
-          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-          <span>{profile.contact.orcidId}</span>
-          <span>↗</span>
+          <svg class="w-4 h-4 text-[#a6ce39]" viewBox="0 0 256 256" fill="currentColor">
+            <path d="M128 0C57.3 0 0 57.3 0 128s57.3 128 128 128 128-57.3 128-128S198.7 0 128 0zm-42.3 194.7H60.2V83.1h25.5v111.6zm-12.8-127c-8.2 0-14.8-6.6-14.8-14.8s6.6-14.8 14.8-14.8 14.8 6.6 14.8 14.8-6.6 14.8-14.8 14.8zm124.6 63.8c0 35.8-21.7 54.8-54.8 54.8h-41.5V83.1h44.3c31.5 0 52 20.3 52 51.4zm-26.6 0c0-21.7-12.8-33.8-30.8-33.8h-14.7v67.7h14.7c18 0 30.8-12.1 30.8-33.9z"/>
+          </svg>
+          <span>View Public ORCID Profile ({profile.contact.orcidId})</span>
+          <span class="text-xs text-gray-500">↗</span>
         </a>
       </div>
     </div>
 
-    <!-- Publications List -->
-    <div class="space-y-6">
-      {publications.map((pub) => (
-        <article key={pub.id} class="p-6 rounded-lg bg-[#070c14] border border-[#162334] hover:border-emerald-500/40 transition-all space-y-4">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between text-xs border-b border-[#141e2e] pb-3 gap-2">
-            <span class="text-emerald-400 font-bold uppercase tracking-wider">
-              {pub.status}
+    <!-- Active Research Monograph -->
+    <article class="p-6 rounded-lg bg-[#070c14] border border-[#162334] space-y-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between text-xs border-b border-[#141e2e] pb-3 gap-2">
+        <span class="text-emerald-400 font-bold uppercase tracking-wider">
+          {paper.status}
+        </span>
+        <div class="flex items-center space-x-3 text-gray-400">
+          <span>{paper.date}</span>
+          <span>•</span>
+          <span class="text-cyan-400">{paper.category}</span>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-white hover:text-emerald-300">
+          <a href={`/research/${paper.slug}`}>{paper.title}</a>
+        </h2>
+        <p class="text-xs text-gray-400 mt-1">
+          Authors: {paper.authors.join(', ')}
+        </p>
+      </div>
+
+      <p class="text-xs text-gray-300 leading-relaxed bg-[#03060a] p-4 rounded border border-[#141e2e]">
+        {paper.abstract}
+      </p>
+
+      <div class="flex flex-wrap items-center justify-between gap-4 pt-2 text-xs">
+        <div class="flex flex-wrap gap-1.5">
+          {paper.topics.map(t => (
+            <span key={t} class="text-[10px] px-2 py-0.5 rounded bg-[#0b121e] text-gray-400 border border-[#1d2a3e]">
+              {t}
             </span>
-            <div class="flex items-center space-x-3 text-gray-400">
-              <span>{pub.date}</span>
-              <span>•</span>
-              <span class="text-cyan-400">{pub.venue}</span>
-            </div>
-          </div>
+          ))}
+        </div>
 
-          <div>
-            <h2 class="text-lg sm:text-xl font-bold text-white hover:text-emerald-300">
-              <a href={pub.externalUrl || '#'}>{pub.title}</a>
-            </h2>
-            <p class="text-xs text-gray-500 mt-1">
-              Authors: {pub.authors.join(', ')}
-            </p>
-          </div>
-
-          <p class="text-xs sm:text-sm text-gray-300 leading-relaxed bg-[#03060a] p-4 rounded border border-[#141e2e]">
-            {pub.abstract}
-          </p>
-
-          <div class="flex flex-wrap items-center justify-between gap-4 pt-2 text-xs">
-            <div class="flex flex-wrap gap-1.5">
-              {pub.topics.map(t => (
-                <span key={t} class="text-[10px] px-2 py-0.5 rounded bg-[#0b121e] text-gray-400 border border-[#1d2a3e]">
-                  {t}
-                </span>
-              ))}
-            </div>
-
-            <div class="flex items-center space-x-3">
-              {pub.pdfUrl && (
-                <a 
-                  href={pub.pdfUrl} 
-                  target="_blank" 
-                  class="px-3 py-1.5 rounded bg-emerald-500/10 border border-emerald-500/40 text-emerald-300 hover:bg-emerald-500/20 transition-all font-bold"
-                >
-                  Download PDF
-                </a>
-              )}
-              {pub.externalUrl && (
-                <a href={pub.externalUrl} class="text-emerald-400 hover:underline">
-                  Full Details &rarr;
-                </a>
-              )}
-            </div>
-          </div>
-        </article>
-      ))}
-    </div>
+        <div class="flex items-center space-x-3">
+          {paper.pdfPath && (
+            <a 
+              href={paper.pdfPath} 
+              target="_blank" 
+              class="px-3 py-1.5 rounded bg-[#0d1624] border border-emerald-500/40 text-emerald-300 hover:bg-[#131f32] transition-colors font-bold"
+            >
+              Download PDF (615 KB)
+            </a>
+          )}
+          <a href={`/research/${paper.slug}`} class="text-emerald-400 hover:underline">
+            Read Analytical Formulations &rarr;
+          </a>
+        </div>
+      </div>
+    </article>
   </div>
 </Layout>

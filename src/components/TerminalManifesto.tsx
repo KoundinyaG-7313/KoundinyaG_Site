@@ -22,7 +22,6 @@ export const TerminalManifesto: React.FC<TerminalManifestoProps> = () => {
   const [currentLineTyped, setCurrentLineTyped] = useState("");
   const [completedLines, setCompletedLines] = useState<string[]>([]);
   const [isFinished, setIsFinished] = useState(false);
-  const [showCrt, setShowCrt] = useState(true);
 
   // Skip animation to display everything instantly
   const handleSkip = () => {
@@ -90,45 +89,36 @@ export const TerminalManifesto: React.FC<TerminalManifestoProps> = () => {
   }, [activeLineIndex, currentLineTyped, isFinished]);
 
   return (
-    <div className="relative w-full max-w-4xl mx-auto my-6 rounded-lg overflow-hidden border border-emerald-900/60 bg-[#04080c] shadow-2xl font-mono text-sm leading-relaxed">
+    <div className="relative w-full max-w-4xl mx-auto my-6 rounded-lg overflow-hidden border border-[#1d2a3e] bg-[#04080c] shadow-2xl font-mono text-sm leading-relaxed">
       {/* Terminal Title Bar */}
-      <div className="flex items-center justify-between px-4 py-2 bg-[#091118] border-b border-emerald-900/40 select-none">
+      <div className="flex items-center justify-between px-4 py-2.5 bg-[#080d16] border-b border-[#141e2e] select-none">
         <div className="flex items-center space-x-2">
           <div className="w-3 h-3 rounded-full bg-red-500/80 cursor-pointer" onClick={handleRestart} title="Replay" />
-          <div className="w-3 h-3 rounded-full bg-amber-500/80 cursor-pointer" onClick={() => setShowCrt(!showCrt)} title="Toggle CRT" />
-          <div className="w-3 h-3 rounded-full bg-emerald-500/80 cursor-pointer" onClick={handleSkip} title="Instant Display" />
-          <span className="text-xs text-emerald-400/70 font-mono ml-2 tracking-wider">anti-code@arch-box: ~/manifesto.sh</span>
+          <div className="w-3 h-3 rounded-full bg-amber-500/80 cursor-pointer" onClick={handleSkip} title="Instant Display" />
+          <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
+          <span className="text-xs text-gray-400 font-mono ml-2 tracking-wide">anti-code@arch: ~/manifesto.sh</span>
         </div>
         <div className="flex items-center space-x-3 text-xs text-gray-500">
-          <button 
-            onClick={() => setShowCrt(!showCrt)}
-            className="text-[10px] px-2 py-0.5 rounded border border-gray-700/60 hover:text-emerald-400 hover:border-emerald-500/50 transition-colors"
-          >
-            CRT: {showCrt ? "ON" : "OFF"}
-          </button>
           {!isFinished ? (
             <button 
               onClick={handleSkip} 
-              className="text-[10px] text-emerald-400 hover:underline cursor-pointer"
+              className="text-[11px] text-emerald-400 hover:underline cursor-pointer"
             >
-              [SKIP ANIMATION]
+              [Skip]
             </button>
           ) : (
             <button 
               onClick={handleRestart} 
-              className="text-[10px] text-gray-400 hover:text-emerald-300 hover:underline cursor-pointer"
+              className="text-[11px] text-gray-400 hover:text-emerald-300 hover:underline cursor-pointer"
             >
-              [REPLAY]
+              [Replay]
             </button>
           )}
         </div>
       </div>
 
       {/* Terminal Window Content */}
-      <div className={`relative p-5 sm:p-7 min-h-[310px] text-emerald-400 bg-[#030609] ${showCrt ? 'crt-overlay' : ''}`}>
-        {/* Decorative Grid */}
-        <div className="absolute inset-0 tech-grid-bg opacity-30 pointer-events-none" />
-
+      <div className="relative p-5 sm:p-7 min-h-[300px] text-emerald-400 bg-[#030609]">
         <div className="relative z-10 space-y-1.5">
           {/* Prompt line */}
           <div className="flex items-center text-emerald-300 font-semibold tracking-wide">
@@ -177,7 +167,7 @@ export const TerminalManifesto: React.FC<TerminalManifestoProps> = () => {
           {isFinished && (
             <div className="pt-2 flex items-center text-xs text-emerald-500/80">
               <span className="text-emerald-400 mr-2">root@anti-code:~#</span>
-              <span className="inline-block w-2.5 h-4 bg-emerald-400 animate-pulse" />
+              <span className="inline-block w-2 h-4 bg-emerald-400 animate-pulse" />
             </div>
           )}
         </div>

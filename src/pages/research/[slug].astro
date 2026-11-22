@@ -47,12 +47,13 @@ const { project } = Astro.props;
 
       <div class="flex flex-wrap items-center justify-between gap-4 pt-2 text-xs text-gray-400">
         <div>
-          <span class="text-gray-500">Primary Investigator:</span> <span class="text-white font-bold">{project.authors.join(', ')}</span>
+          <span class="text-gray-500">Author:</span> <span class="text-white font-bold">{project.authors.join(', ')}</span>
         </div>
-        {project.doi && (
-          <div class="px-2 py-1 rounded bg-[#03060a] border border-[#141e2e] text-[11px] text-gray-400">
-            DOI: {project.doi}
-          </div>
+        {project.orcidUrl && (
+          <a href={project.orcidUrl} target="_blank" rel="noopener noreferrer" class="px-2.5 py-1 rounded bg-[#0b121e] border border-emerald-500/30 text-emerald-300 hover:bg-[#121c2c] text-xs flex items-center space-x-1.5">
+            <span>ORCID: 0009-0002-8419-7313</span>
+            <span>↗</span>
+          </a>
         )}
       </div>
 

@@ -11,7 +11,6 @@ export interface Profile {
     github: string;
     githubUser: string;
     orcidId: string;
-    gpgKeyFingerprint: string;
   };
   skills: {
     category: string;
@@ -22,8 +21,8 @@ export interface Profile {
 export const profile: Profile = {
   name: "Koundinya Gajulapalli",
   alias: "Max",
-  tagline: "Student, Researcher, Systems Builder & Aspiring Theoretical Physicist",
-  bio: "Exploring fundamental theoretical physics, cosmology, quantum gravity, systems engineering, Arch Linux, classical music (Sarod & Piano), and high-cadence endurance cycling. I build things from scratch, question unnecessary abstractions, and examine whether mathematical formulations genuinely reflect physical reality.",
+  tagline: "Student, Aspiring Theoretical Physicist & Systems Programmer",
+  bio: "Interested in theoretical physics, cosmology, quantum gravity, low-level systems engineering, Arch Linux, classical music (Sarod and Piano), and endurance cycling. I build things from scratch and investigate the foundational structure of reality.",
   manifestoPrompt: "root@anti-code:~# ./manifesto.sh",
   manifestoLines: [
     "Governments seek control. Corporations seek influence. Trust neither blindly.",
@@ -33,38 +32,33 @@ export const profile: Profile = {
     "Status: ONLINE",
   ],
   currentFocus: [
-    "Relational dynamics and Hamiltonian constraints in 5D ultrahyperbolic cosmological bulks",
-    "Kernel-level Linux telemetry and process classification (Omni-Dashboard)",
-    "Microtonal tuning geometry and algorithmic raga generation for Sarod",
-    "Long-distance endurance road cycling and high-altitude climbs",
+    "Theoretical cosmology and relational time in a 5D ultrahyperbolic bulk",
+    "Systems programming and Linux telemetry in Rust and C++ (Omni-Dashboard)",
+    "Sarod classical training and microtonal music synthesis",
+    "Long-distance endurance cycling",
   ],
   contact: {
-    email: "koundinyag@protonmail.com",
+    email: "koundinyag@outlook.com",
     github: "https://github.com/KoundinyaG-7313",
     githubUser: "KoundinyaG-7313",
     orcidId: "0009-0002-8419-7313",
-    gpgKeyFingerprint: "4A9D 8E22 710F B341 9C02  88FB 3D90 E67A 2108 55AC",
   },
   skills: [
     {
-      category: "Theoretical & Mathematical Physics",
-      items: ["General Relativity", "Quantum Field Theory", "Cosmology", "Differential Geometry", "Tensor Calculus", "Relational Dynamics (Barbour-Bertotti)", "Higher-Dimensional Spacetimes"],
+      category: "Theoretical Physics & Mathematics",
+      items: ["General Relativity", "Quantum Field Theory", "Cosmology", "Differential Geometry", "Tensor Calculus", "Relational Dynamics (Barbour-Bertotti)"],
     },
     {
-      category: "Systems & Low-Level Engineering",
-      items: ["Linux Kernel (eBPF, procfs, sysfs)", "C / C++", "Rust", "Arch Linux", "Hyprland / Wayland internals", "Git internals & filter-repo"],
+      category: "Systems & Software Engineering",
+      items: ["Rust", "C / C++", "Linux Kernel (procfs, sysfs)", "Arch Linux", "Hyprland", "TypeScript", "Python"],
     },
     {
-      category: "Software & Web Architecture",
-      items: ["TypeScript", "React", "Astro", "Tailwind CSS", "Web Audio API", "WebGL / Canvas Shaders", "Godot / GDScript"],
+      category: "Hardware & Making",
+      items: ["Parametric CAD (FreeCAD / STEP)", "3D Printing", "Telescope Optics & Astrophotography"],
     },
     {
-      category: "Hardware & Physical Systems",
-      items: ["Parametric CAD (FreeCAD / STEP)", "Additive Manufacturing (3D Printing)", "Telescope Optics & Astrophotography", "Embedded Microcontrollers"],
-    },
-    {
-      category: "Acoustics & Classical Music",
-      items: ["Sarod (Indian Classical)", "22 Shruti Microtonal Tuning", "Piano (Classical Repertoire)", "Algorithmic Composition Theory"],
+      category: "Music & Acoustics",
+      items: ["Sarod (Indian Classical)", "Piano (Classical)", "22 Shrutis & Microtonality", "Algorithmic Composition"],
     },
   ],
 };

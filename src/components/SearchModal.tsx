@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { projects } from '../data/projects';
 import { researchProjects } from '../data/research';
-import { worldBiomes } from '../data/worldBiomes';
 
 interface SearchItem {
   title: string;
@@ -18,25 +17,21 @@ export const SearchModal: React.FC = () => {
 
   // Compile searchable index
   const allItems: SearchItem[] = [
-    // Standard Pages
-    { title: 'Home', category: 'Core Node', url: '/', description: 'Terminal manifesto, digital world overview, active systems status' },
-    { title: 'World Map', category: 'Exploration', url: '/world', description: 'Interactive biome map across research lab, celestial observatory, and abyss' },
-    { title: 'About Max', category: 'Core Node', url: '/about', description: 'Theoretical physicist, systems programmer, sarod musician, endurance cyclist' },
-    { title: 'Research Directory', category: 'Science', url: '/research', description: 'Relational time in 5D bulks, cosmology, quantum gravity, Wheeler-DeWitt' },
-    { title: 'Publications & Works', category: 'Science', url: '/publications', description: 'Academic preprints, theoretical monographs, and ORCID publications' },
-    { title: 'Projects Catalog', category: 'Systems', url: '/projects', description: 'Omni-Dashboard, AlgorithmicMusicApp, labcoat 3D physics, CAD' },
-    { title: 'GitHub Dashboard', category: 'Telemetry', url: '/github', description: 'Synchronized commit history, repositories, and language distributions' },
-    { title: 'Blog & Articles', category: 'Writing', url: '/blog', description: 'Deep technical writing on cosmology, Machian time, and software architecture' },
-    { title: 'Celestial Observatory', category: 'Exploration', url: '/astronomy', description: 'Telescope optics, observation logs (M42, M31), astrophotography' },
-    { title: 'Music & Acoustics', category: 'Arts', url: '/music', description: 'Indian classical Sarod, 22-Shruti microtonality, Western piano, algorithmic audio' },
-    { title: 'Chronological Timeline', category: 'History', url: '/timeline', description: 'Milestones across physics research, kernel code, and cycling centuries' },
-    { title: 'Achievements & Milestones', category: 'Record', url: '/achievements', description: 'Authentic accomplishments without empty corporate titles' },
-    { title: 'Uses & Hardware Setup', category: 'Systems', url: '/uses', description: 'Arch Linux, Hyprland, Kitty Arasaka theme, Neovim, cycling gear' },
-    { title: 'Now Page', category: 'Status', url: '/now', description: 'Active reading list, ongoing research derivations, current training block' },
-    { title: 'Guestbook Terminal', category: 'Interactive', url: '/guestbook', description: 'Visitor signal transmitter and guest ledger' },
-    { title: 'Privacy Manifesto', category: 'Philosophy', url: '/privacy', description: 'Zero telemetry, zero third-party trackers, local-first computing' },
-    { title: 'Curated Links & Webring', category: 'Directory', url: '/links', description: 'Physics foundations, systems resources, essential readings' },
-    { title: 'Secure Contact Node', category: 'Contact', url: '/contact', description: 'ProtonMail, GPG key fingerprint, verified communication channels' },
+    { title: 'Home', category: 'Page', url: '/', description: 'Overview, terminal manifesto, active research and projects' },
+    { title: 'Theoretical Research', category: 'Physics', url: '/research', description: 'Relational time in 5D bulks, cosmology, Machian dynamics' },
+    { title: 'Software Projects', category: 'Code', url: '/projects', description: 'Omni-Dashboard, AlgorithmicMusicApp, labcoat 3D physics, 3D printing' },
+    { title: 'About Max', category: 'Profile', url: '/about', description: 'Student, researcher, systems programmer, Sarod musician, cyclist' },
+    { title: 'Blog & Essays', category: 'Writing', url: '/blog', description: 'Technical essays on cosmology, Machian time, and software architecture' },
+    { title: 'Publications & ORCID', category: 'Registry', url: '/publications', description: 'Academic preprints and ORCID registered identifiers' },
+    { title: 'GitHub Telemetry', category: 'Telemetry', url: '/github', description: 'Repositories, language composition, commit history' },
+    { title: 'Music & Sarod', category: 'Arts', url: '/music', description: 'Indian classical Sarod, 22 Shrutis, piano, algorithmic audio synthesizer' },
+    { title: 'Astronomy', category: 'Science', url: '/astronomy', description: 'Observation logs, telescope optics, astrophotography' },
+    { title: 'Timeline', category: 'History', url: '/timeline', description: 'Progression across research, systems code, and endurance cycling' },
+    { title: 'Achievements', category: 'Records', url: '/achievements', description: 'Substantive milestones and competitive outcomes' },
+    { title: 'Uses & Setup', category: 'Hardware', url: '/uses', description: 'Arch Linux, Hyprland, Kitty Arasaka theme, Neovim, cycling setup' },
+    { title: 'Now', category: 'Status', url: '/now', description: 'Current reading, research derivations, and active experiments' },
+    { title: 'Curated Links', category: 'References', url: '/links', description: 'Physics foundations, systems resources, essential papers' },
+    { title: 'Contact', category: 'Contact', url: '/contact', description: 'Email (Outlook), GitHub profile' },
 
     // Research projects
     ...researchProjects.map(r => ({
@@ -52,14 +47,6 @@ export const SearchModal: React.FC = () => {
       category: 'Project',
       url: `/projects/${p.slug}`,
       description: p.description.slice(0, 110) + '...'
-    })),
-
-    // World biomes
-    ...worldBiomes.map(b => ({
-      title: b.name,
-      category: 'World Biome',
-      url: b.targetRoute,
-      description: b.lore.slice(0, 110) + '...'
     }))
   ];
 
@@ -145,7 +132,7 @@ export const SearchModal: React.FC = () => {
               setSelectedIndex(0);
             }}
             onKeyDown={handleInputKeyDown}
-            placeholder="Type a command, paper title, project, or coordinate..."
+            placeholder="Search papers, code, topics, or notes..."
             className="w-full bg-transparent text-sm text-gray-100 placeholder-gray-500 focus:outline-none"
           />
           <button 
@@ -160,7 +147,7 @@ export const SearchModal: React.FC = () => {
         <div className="max-h-96 overflow-y-auto p-2 space-y-1">
           {filteredItems.length === 0 ? (
             <div className="py-8 text-center text-sm text-gray-500">
-              No matching nodes found for <span className="text-emerald-400 font-semibold">"{query}"</span>
+              No matching results found for "{query}"
             </div>
           ) : (
             filteredItems.map((item, idx) => (
@@ -191,8 +178,8 @@ export const SearchModal: React.FC = () => {
 
         {/* Footer info */}
         <div className="px-4 py-2 bg-[#06090e] border-t border-[#1d2a3e] text-[11px] text-gray-500 flex justify-between select-none">
-          <span>Navigate with <kbd className="text-gray-300 bg-[#162132] px-1 rounded">↑</kbd> <kbd className="text-gray-300 bg-[#162132] px-1 rounded">↓</kbd></span>
-          <span>Select with <kbd className="text-gray-300 bg-[#162132] px-1 rounded">Enter</kbd></span>
+          <span>Navigate with <kbd className="text-gray-300 bg-[#162334] px-1 rounded">↑</kbd> <kbd className="text-gray-300 bg-[#162334] px-1 rounded">↓</kbd></span>
+          <span>Select with <kbd className="text-gray-300 bg-[#162334] px-1 rounded">Enter</kbd></span>
         </div>
       </div>
     </div>
